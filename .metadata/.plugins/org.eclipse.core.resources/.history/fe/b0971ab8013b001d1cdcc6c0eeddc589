@@ -1,0 +1,5 @@
+package com.springREST.RestAPI.entities;
+
+public class DateAndTime {
+
+}
