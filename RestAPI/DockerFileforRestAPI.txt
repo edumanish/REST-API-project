@@ -1,0 +1,21 @@
+#Pull this amazon JDK 1.8 from docker hub in local (https://hub.docker.com/_/amazoncorretto/tags)
+#docker pull amazoncorretto:8u342-al2
+#try setting ENV JAVA_HOME= 
+#Added all folder structure as it is, we must build all first to get all relevant files 7 folder. CAN BE MODIFIED LATER
+
+
+FROM amazoncorretto:8u342-al2
+
+#ENV not set
+
+ADD .metadata/ /.metadata
+ADD .mvn/ /.mvn
+ADD .settings/ /.settings
+ADD src/ /src
+ADD target/ /target
+RUN chmod -R 777 /RestAPI-0.0.1-SNAPSHOT.jar
+
+#VOLUME /tmp
+EXPOSE 8088
+
+CMD java -jar ./target/RestAPI-0.0.1-SNAPSHOT.jar
